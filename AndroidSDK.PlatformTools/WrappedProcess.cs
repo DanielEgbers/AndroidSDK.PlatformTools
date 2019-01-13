@@ -51,9 +51,11 @@ namespace AndroidSDK.PlatformTools
                 progress?.Report(data);
             }
 
+            var jobHandle = this.CreateKillOnCurrentProcessExitJob(breakawayChildProcess: breakawayChildProcess);
+
             base.Start();
 
-            this.KillOnCurrentProcessExit(breakawayChildProcess: breakawayChildProcess);
+            this.KillOnCurrentProcessExit(jobHandle);
 
             while (NextOutputLine(out var outputLine) && cancellationToken?.IsCancellationRequested != true)
             {
@@ -107,9 +109,11 @@ namespace AndroidSDK.PlatformTools
             OutputDataReceived += HandleOutputDataReceived;
             try
             {
+                var jobHandle = this.CreateKillOnCurrentProcessExitJob(breakawayChildProcess: breakawayChildProcess);
+
                 base.Start();
 
-                this.KillOnCurrentProcessExit(breakawayChildProcess: breakawayChildProcess);
+                this.KillOnCurrentProcessExit(jobHandle);
 
                 BeginErrorReadLine();
                 BeginOutputReadLine();

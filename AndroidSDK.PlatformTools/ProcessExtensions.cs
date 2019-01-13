@@ -1,6 +1,7 @@
 ﻿using System;
 using System.ComponentModel;
 using System.Diagnostics;
+using System.IO;
 using System.Runtime.InteropServices;
 
 // https://stackoverflow.com/a/37034966
@@ -11,16 +12,25 @@ namespace AndroidSDK.PlatformTools
     {
         public static IntPtr KillOnCurrentProcessExit(this Process process, bool allowChildProcessBreakaway = false, bool breakawayChildProcess = false)
         {
-            // This feature requires Windows 8 or later
-            if (Environment.OSVersion.Version < new Version(6, 2))
-                return IntPtr.Zero;
+            var jobHandle = CreateKillOnCurrentProcessExitJob(process, allowChildProcessBreakaway, breakawayChildProcess);
+            KillOnCurrentProcessExit(process, jobHandle);
+            return jobHandle;
+        }
 
+        public static void KillOnCurrentProcessExit(this Process process, IntPtr jobHandle)
+        {
             if (process.Handle == IntPtr.Zero)
                 throw new InvalidOperationException();
 
+            if (!NativeMethods.AssignProcessToJobObject(jobHandle, process.Handle))
+                throw new Win32Exception();
+        }
+
+        public static IntPtr CreateKillOnCurrentProcessExitJob(this Process process, bool allowChildProcessBreakaway = false, bool breakawayChildProcess = false)
+        {
             var currentProcess = Process.GetCurrentProcess();
 
-            var jobName = $"{nameof(KillOnCurrentProcessExit)}___{currentProcess.ProcessName}_{currentProcess.Id}_{currentProcess.Handle}__{process.ProcessName}_{process.Id}_{process.Handle}___{Guid.NewGuid().ToString("N")}";
+            var jobName = $"{nameof(KillOnCurrentProcessExit)}___{currentProcess.ProcessName}_{currentProcess.Id}_{currentProcess.Handle}___{Guid.NewGuid().ToString("N")}";
 
             var limit = NativeMethods.JOBOBJECTLIMIT.JOB_OBJECT_LIMIT_KILL_ON_JOB_CLOSE;
             if (allowChildProcessBreakaway)
@@ -50,9 +60,6 @@ namespace AndroidSDK.PlatformTools
                 var jobHandle = NativeMethods.CreateJobObject(IntPtr.Zero, jobName);
 
                 if (!NativeMethods.SetInformationJobObject(jobHandle, NativeMethods.JobObjectInfoType.ExtendedLimitInformation, extendedInfoPtr, (uint)extendedInfoSize))
-                    throw new Win32Exception();
-
-                if (!NativeMethods.AssignProcessToJobObject(jobHandle, process.Handle))
                     throw new Win32Exception();
 
                 return jobHandle;
