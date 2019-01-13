@@ -1,7 +1,10 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp2.1</TargetFramework>
+    <TargetFrameworks>netcoreapp2.1</TargetFrameworks>
+    <LangVersion>latest</LangVersion>
+    <DebugType>Full</DebugType>
+    <Version>0</Version>
   </PropertyGroup>
 
 </Project>
