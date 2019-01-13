@@ -2,11 +2,12 @@
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
-    <TargetFramework>netcoreapp2.1</TargetFramework>
-    <AssemblyName>AndroidSDK.PlatformTools.Fastboot</AssemblyName>
+    <TargetFrameworks>netcoreapp2.1</TargetFrameworks>
+    <LangVersion>latest</LangVersion>
+    <DebugType>Full</DebugType>
+    <Version>28.0.1</Version>
     <PackAsTool>true</PackAsTool>
     <ToolCommandName>fastboot</ToolCommandName>
-    <Version>28.0.1</Version>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
   </PropertyGroup>
 
@@ -20,6 +21,10 @@
     <None Include="..\AndroidSDK.PlatformTools\AdbWinUsbApi.dll" Link="AdbWinUsbApi.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\AndroidSDK.PlatformTools\AndroidSDK.PlatformTools.csproj" />
   </ItemGroup>
 
 </Project>

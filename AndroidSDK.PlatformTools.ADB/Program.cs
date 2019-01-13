@@ -1,25 +1,38 @@
 ﻿using System;
-using System.Diagnostics;
 using System.IO;
-using System.Linq;
+using System.Threading.Tasks;
 
 namespace AndroidSDK.PlatformTools.ADB
 {
     public static class Program
     {
-        public static void Main(string[] args)
+#pragma warning disable IDE1006 // Naming Styles
+        public static async Task Main(string[] args)
+#pragma warning restore IDE1006 // Naming Styles
         {
-            var processInfo = new ProcessStartInfo
-            (
-                fileName: Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "adb.exe"),
-                arguments: string.Join(" ", args.Select(a => $"\"{a}\""))
-            );
-            Process.Start(processInfo).WaitForExit();
-
-            if (Debugger.IsAttached)
+#if DEBUG
+            if (!System.Diagnostics.Debugger.IsAttached)
             {
+                System.Diagnostics.Debugger.Launch();
+            }
+#endif
+            var path = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "adb.exe");
+            var process = new WrappedProcess(path, args);
+            await process.StartAsync
+            (
+                progress: new Progress<string>
+                (
+                    data => 
+                        Console.WriteLine(data)
+                )
+            );
+#if DEBUG
+            if (System.Diagnostics.Debugger.IsAttached)
+            {
+                Console.WriteLine("----------");
                 Console.ReadKey();
             }
+#endif
         }
     }
 }
