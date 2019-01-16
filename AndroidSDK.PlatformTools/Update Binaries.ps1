@@ -7,9 +7,10 @@ Add-Type -AssemblyName System.IO.Compression.FileSystem
 $ProgressPreference = 'SilentlyContinue'
 
 if ([string]::IsNullOrWhitespace($Version)) {  
-  $Version = Read-Host "Version" 
+  $url = "https://dl.google.com/android/repository/platform-tools-latest-windows.zip"
+} else {
+  $url = "https://dl.google.com/android/repository/platform-tools_r$version-windows.zip"
 }
-$url = "https://dl.google.com/android/repository/platform-tools_r$version-windows.zip"
 
 $tempPath = Join-Path (Get-Location) "tmp"
 if (Test-Path $tempPath)
