@@ -16,13 +16,13 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Include="..\AndroidSDK.PlatformTools\fastboot.exe" Link="fastboot.exe">
+    <None Include="..\AndroidSDK.PlatformTools\Binaries\fastboot.exe" Link="fastboot.exe">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="..\AndroidSDK.PlatformTools\AdbWinApi.dll" Link="AdbWinApi.dll">
+    <None Include="..\AndroidSDK.PlatformTools\Binaries\AdbWinApi.dll" Link="AdbWinApi.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="..\AndroidSDK.PlatformTools\AdbWinUsbApi.dll" Link="AdbWinUsbApi.dll">
+    <None Include="..\AndroidSDK.PlatformTools\Binaries\AdbWinUsbApi.dll" Link="AdbWinUsbApi.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
