@@ -9,7 +9,10 @@
     <PackAsTool>true</PackAsTool>
     <ToolCommandName>adb</ToolCommandName>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Description>This .NET Core Global Tool allows you to use ADB (Android Debug Bridge) without having to install the full Android SDK</Description>
+    <Description>Enables the use of ADB (Android Debug Bridge) (from Android SDK Platform Tools) as .NET Core Global Tool</Description>
+    <PackageProjectUrl>https://github.com/DanielEgbers/AndroidSDK.PlatformTools</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/DanielEgbers/AndroidSDK.PlatformTools</RepositoryUrl>
+    <PackageTags>Android SDK Platform Tools ADB Android Debug Bridge</PackageTags>
   </PropertyGroup>
 
   <ItemGroup>

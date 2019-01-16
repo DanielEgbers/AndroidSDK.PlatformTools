@@ -9,7 +9,10 @@
     <PackAsTool>true</PackAsTool>
     <ToolCommandName>fastboot</ToolCommandName>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Description>This .NET Core Global Tool allows you to use Fastboot without having to install the full Android SDK</Description>
+    <Description>Enables the use of Fastboot (from Android SDK Platform Tools) as .NET Core Global Tool</Description>
+    <PackageProjectUrl>https://github.com/DanielEgbers/AndroidSDK.PlatformTools</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/DanielEgbers/AndroidSDK.PlatformTools</RepositoryUrl>
+    <PackageTags>Android SDK Platform Tools Fastboot</PackageTags>
   </PropertyGroup>
 
   <ItemGroup>
