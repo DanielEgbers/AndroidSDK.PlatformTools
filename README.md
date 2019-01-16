@@ -14,6 +14,8 @@ Enables the use of [Android SDK Platform Tools](https://developer.android.com/st
 
 ### ADB (Android Debug Bridge)
 
+[![AndroidSDK.PlatformTools.ADB](https://img.shields.io/nuget/v/AndroidSDK.PlatformTools.ADB.svg?style=flat-square)](https://www.nuget.org/packages/AndroidSDK.PlatformTools.ADB)
+
 #### Install
 ```
 dotnet tool install --global AndroidSDK.PlatformTools.ADB
@@ -30,6 +32,8 @@ dotnet tool uninstall --global AndroidSDK.PlatformTools.ADB
 ```
 
 ### Fastboot
+
+[![AndroidSDK.PlatformTools.Fastboot](https://img.shields.io/nuget/v/AndroidSDK.PlatformTools.Fastboot.svg?style=flat-square)](https://www.nuget.org/packages/AndroidSDK.PlatformTools.Fastboot)
 
 #### Install
 ```
