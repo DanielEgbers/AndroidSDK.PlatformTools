@@ -31,4 +31,8 @@
     <ProjectReference Include="..\AndroidSDK.PlatformTools\AndroidSDK.PlatformTools.csproj" />
   </ItemGroup>
 
+  <Target Name="PostPack" AfterTargets="Pack" Condition="'$(Configuration)' == 'Debug'">
+    <Exec Command="powershell.exe -NoProfile -ExecutionPolicy Bypass -File PostPack.ps1" />
+  </Target>
+
 </Project>
