@@ -5,7 +5,7 @@
     <TargetFrameworks>netcoreapp2.1</TargetFrameworks>
     <LangVersion>latest</LangVersion>
     <DebugType>Full</DebugType>
-    <Version>28.0.1</Version>
+    <Version>30.0.4</Version>
     <PackAsTool>true</PackAsTool>
     <ToolCommandName>fastboot</ToolCommandName>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
