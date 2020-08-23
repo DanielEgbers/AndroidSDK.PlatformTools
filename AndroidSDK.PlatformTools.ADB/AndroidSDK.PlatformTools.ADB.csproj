@@ -5,7 +5,7 @@
     <TargetFrameworks>netcoreapp2.1</TargetFrameworks>
     <LangVersion>latest</LangVersion>
     <DebugType>Full</DebugType>
-    <Version>1.0.40</Version>
+    <Version>1.0.41</Version>
     <PackAsTool>true</PackAsTool>
     <ToolCommandName>adb</ToolCommandName>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
